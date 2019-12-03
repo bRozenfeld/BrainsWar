@@ -1,0 +1,16 @@
+debug/bishop.o
+debug/board.o
+debug/cell.o
+debug/game.o
+debug/gcell.o
+debug/ggame.o
+debug/king.o
+debug/main.o
+debug/move.o
+debug/pawn.o
+debug/piece.o
+debug/player.o
+debug/queen.o
+debug/rook.o
+debug/moc_gcell.o
+debug/moc_ggame.o

@@ -1,0 +1,16 @@
+release/bishop.o
+release/board.o
+release/cell.o
+release/game.o
+release/gcell.o
+release/ggame.o
+release/king.o
+release/main.o
+release/move.o
+release/pawn.o
+release/piece.o
+release/player.o
+release/queen.o
+release/rook.o
+release/moc_gcell.o
+release/moc_ggame.o
