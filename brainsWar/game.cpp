@@ -4,6 +4,7 @@ Game::Game()
 {
     m_board = new Board();
     m_is_white_turn = true;
+    m_is_promoted = false;
     initGame();
 }
 
@@ -14,70 +15,72 @@ void Game::initGame()
     std::vector<Piece*> black_pieces;
 
     Rook *br1 = new Rook("BR", m_board->getCell(0,0), false);
-    Rook *br2 = new Rook("BR", m_board->getCell(7,0), false);
-    Bishop *bb1 = new Bishop("BB", m_board->getCell(2,0), false);
-    Bishop *bb2 = new Bishop("BB", m_board->getCell(5,0), false);
-    Knight *bn1 = new Knight("BN", m_board->getCell(1,0), false);
-    Knight *bn2 = new Knight("BN", m_board->getCell(6,0), false);
+//    Rook *br2 = new Rook("BR", m_board->getCell(7,0), false);
+//    Bishop *bb1 = new Bishop("BB", m_board->getCell(2,0), false);
+//    Bishop *bb2 = new Bishop("BB", m_board->getCell(5,0), false);
+//    Knight *bn1 = new Knight("BN", m_board->getCell(1,0), false);
+//    Knight *bn2 = new Knight("BN", m_board->getCell(6,0), false);
     King *bk = new King("BK", m_board->getCell(4,0), false);
-    Pawn *bp1 = new Pawn("BP", m_board->getCell(0,1), false);
-    Pawn *bp2 = new Pawn("BP", m_board->getCell(1,1), false);
-    Pawn *bp3 = new Pawn("BP", m_board->getCell(2,1), false);
-    Pawn *bp4 = new Pawn("BP", m_board->getCell(3,1), false);
-    Pawn *bp5 = new Pawn("BP", m_board->getCell(4,1), false);
-    Pawn *bp6 = new Pawn("BP", m_board->getCell(5,1), false);
-    Pawn *bp7 = new Pawn("BP", m_board->getCell(6,1), false);
-    Pawn *bp8 = new Pawn("BP", m_board->getCell(7,1), false);
+//    Queen *bq = new Queen("BQ", m_board->getCell(3,0), false);
+//    Pawn *bp1 = new Pawn("BP", m_board->getCell(0,1), false);
+//    Pawn *bp2 = new Pawn("BP", m_board->getCell(1,1), false);
+//    Pawn *bp3 = new Pawn("BP", m_board->getCell(2,1), false);
+//    Pawn *bp4 = new Pawn("BP", m_board->getCell(3,1), false);
+//    Pawn *bp5 = new Pawn("BP", m_board->getCell(4,1), false);
+//    Pawn *bp6 = new Pawn("BP", m_board->getCell(5,1), false);
+//    Pawn *bp7 = new Pawn("BP", m_board->getCell(6,1), false);
+//    Pawn *bp8 = new Pawn("BP", m_board->getCell(7,1), false);
 
-    Rook *wr1 = new Rook("WR", m_board->getCell(0,7), true);
-    Rook *wr2 = new Rook("WR", m_board->getCell(7,7), true);
-    Bishop *wb1 = new Bishop("WB", m_board->getCell(2,7), true);
-    Bishop *wb2 = new Bishop("WB", m_board->getCell(5,7), true);
-    Knight *wn1 = new Knight("WN", m_board->getCell(1,7), true);
-    Knight *wn2 = new Knight("WN", m_board->getCell(6,7), true);
+//    Rook *wr1 = new Rook("WR", m_board->getCell(0,7), true);
+//    Rook *wr2 = new Rook("WR", m_board->getCell(7,7), true);
+//    Bishop *wb1 = new Bishop("WB", m_board->getCell(2,7), true);
+//    Bishop *wb2 = new Bishop("WB", m_board->getCell(5,7), true);
+//    Knight *wn1 = new Knight("WN", m_board->getCell(1,7), true);
+//    Knight *wn2 = new Knight("WN", m_board->getCell(6,7), true);
     King *wk = new King("WK", m_board->getCell(4,7), true);
-    Queen *wq = new Queen("WQ", m_board->getCell(5,7), true);
-    Pawn *wp1 = new Pawn("WP", m_board->getCell(0,6), true);
-    Pawn *wp2 = new Pawn("WP", m_board->getCell(1,6), true);
-    Pawn *wp3 = new Pawn("WP", m_board->getCell(2,6), true);
-    Pawn *wp4 = new Pawn("WP", m_board->getCell(3,6), true);
-    Pawn *wp5 = new Pawn("WP", m_board->getCell(4,6), true);
-    Pawn *wp6 = new Pawn("WP", m_board->getCell(5,6), true);
-    Pawn *wp7 = new Pawn("WP", m_board->getCell(6,6), true);
+//    Queen *wq = new Queen("WQ", m_board->getCell(3,7), true);
+//    Pawn *wp1 = new Pawn("WP", m_board->getCell(0,6), true);
+//    Pawn *wp2 = new Pawn("WP", m_board->getCell(1,6), true);
+//    Pawn *wp3 = new Pawn("WP", m_board->getCell(2,6), true);
+//    Pawn *wp4 = new Pawn("WP", m_board->getCell(3,6), true);
+//    Pawn *wp5 = new Pawn("WP", m_board->getCell(4,6), true);
+//    Pawn *wp6 = new Pawn("WP", m_board->getCell(5,6), true);
+//    Pawn *wp7 = new Pawn("WP", m_board->getCell(6,6), true);
     Pawn *wp8 = new Pawn("WP", m_board->getCell(7,6), true);
 
 
-    black_pieces.push_back(br1);
-    black_pieces.push_back(br2);
-    black_pieces.push_back(bb1);
-    black_pieces.push_back(bb2);
-    black_pieces.push_back(bn1);
-    black_pieces.push_back(bn2);
+      black_pieces.push_back(br1);
+//    black_pieces.push_back(br2);
+//    black_pieces.push_back(bb1);
+//    black_pieces.push_back(bb2);
+//    black_pieces.push_back(bn1);
+//    black_pieces.push_back(bn2);
     black_pieces.push_back(bk);
-    black_pieces.push_back(bp1);
-    black_pieces.push_back(bp2);
-    black_pieces.push_back(bp3);
-    black_pieces.push_back(bp4);
-    black_pieces.push_back(bp5);
-    black_pieces.push_back(bp6);
-    black_pieces.push_back(bp7);
-    black_pieces.push_back(bp8);
+//    black_pieces.push_back(bq);
+//    black_pieces.push_back(bp1);
+//    black_pieces.push_back(bp2);
+//    black_pieces.push_back(bp3);
+//    black_pieces.push_back(bp4);
+//    black_pieces.push_back(bp5);
+//    black_pieces.push_back(bp6);
+//    black_pieces.push_back(bp7);
+//    black_pieces.push_back(bp8);
 
-    white_pieces.push_back(wr1);
-    white_pieces.push_back(wr2);
-    white_pieces.push_back(wb1);
-    white_pieces.push_back(wb2);
-    white_pieces.push_back(wn1);
-    white_pieces.push_back(wn2);
+//    white_pieces.push_back(wr1);
+//    white_pieces.push_back(wr2);
+//    white_pieces.push_back(wb1);
+//    white_pieces.push_back(wb2);
+//    white_pieces.push_back(wn1);
+//    white_pieces.push_back(wn2);
     white_pieces.push_back(wk);
-    //white_pieces.push_back(wq);
-    white_pieces.push_back(wp1);
-    white_pieces.push_back(wp2);
-    white_pieces.push_back(wp3);
-    white_pieces.push_back(wp4);
-    white_pieces.push_back(wp5);
-    white_pieces.push_back(wp6);
-    white_pieces.push_back(wp7);
+//    white_pieces.push_back(wq);
+//    white_pieces.push_back(wp1);
+//    white_pieces.push_back(wp2);
+//    white_pieces.push_back(wp3);
+//    white_pieces.push_back(wp4);
+//    white_pieces.push_back(wp5);
+//    white_pieces.push_back(wp6);
+//    white_pieces.push_back(wp7);
     white_pieces.push_back(wp8);
 
 
@@ -296,19 +299,15 @@ bool Game::isMovePossible(Cell *from, Cell *to)
 void Game::update()
 {
     // check for a pawn promotion
-/*
+
     for(auto &p : m_white_player->getPiecesLeft())
     {
-        if(typeid(p) == typeid(Pawn))
+        if(typeid(*p) == typeid(Pawn))
         {
             Pawn* pawn = static_cast<Pawn*>(p);
             if(pawn->getCell()->getY() == 0)
             {
-                Rook *r = new Rook("WR", pawn->getCell(), true);
-                //Queen *q = new Queen("WQ", pawn->getCell(), true);
-                m_white_player->removePiece(p);
-                m_white_player->addPiece(r);
-                pawn->setCell(nullptr);
+                m_is_promoted = true;
             }
         }
     }
@@ -320,15 +319,11 @@ void Game::update()
             Pawn* pawn = static_cast<Pawn*>(p);
             if(pawn->getCell()->getY() == 7)
             {
-                Rook *r = new Rook("BR", pawn->getCell(), false);
-                //Queen *q = new Queen("BQ", pawn->getCell(), false);
-                m_black_player->removePiece(p);
-                m_black_player->addPiece(r);
+               m_is_promoted = true;
             }
         }
     }
 
-*/
     nextTurn();
     updatePossibleMoves();
     bool isCheckMate = true;
@@ -362,5 +357,77 @@ void Game::update()
             std::cout << "White player win !" << std::endl;
         }
     }
-
 }
+
+void Game::promotion(Cell *c, int choice)
+{
+    Piece *p = getPieceFromCell(c);
+    // Queen
+    if(choice == 0)
+    {
+        if(p->isWhite())
+        {
+            Queen *q = new Queen("WQ", p->getCell(), true);
+            m_white_player->removePiece(p);
+            m_white_player->addPiece(q);
+        }
+        else
+        {
+            Queen *q = new Queen("BQ", p->getCell(), false);
+            m_black_player->removePiece(p);
+            m_black_player->addPiece(q);
+        }
+    }
+    // Rook
+    else if(choice == 1)
+    {
+        if(p->isWhite())
+        {
+            Rook *q = new Rook("WR", p->getCell(), true);
+            m_white_player->removePiece(p);
+            m_white_player->addPiece(q);
+        }
+        else
+        {
+            Rook *q = new Rook("BR", p->getCell(), false);
+            m_black_player->removePiece(p);
+            m_black_player->addPiece(q);
+        }
+    }
+    // Bishop
+    else if(choice == 2)
+    {
+        if(p->isWhite())
+        {
+            Bishop *q = new Bishop("WB", p->getCell(), true);
+            m_white_player->removePiece(p);
+            m_white_player->addPiece(q);
+        }
+        else
+        {
+            Bishop *q = new Bishop("BB", p->getCell(), false);
+            m_black_player->removePiece(p);
+            m_black_player->addPiece(q);
+        }
+    }
+    // Knight
+    else if(choice == 3)
+    {
+        if(p->isWhite())
+        {
+            Knight *q = new Knight("WN", p->getCell(), true);
+            m_white_player->removePiece(p);
+            m_white_player->addPiece(q);
+        }
+        else
+        {
+            Knight *q = new Knight("BN", p->getCell(), false);
+            m_black_player->removePiece(p);
+            m_black_player->addPiece(q);
+        }
+    }
+    p->setCell(nullptr);
+    m_is_promoted = false;
+}
+
+

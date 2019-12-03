@@ -3,7 +3,7 @@
 
 #include "piece.h"
 
-class Bishop  : public Piece
+class Bishop  : public virtual Piece
 {
 public:
     Bishop(std::string name, Cell *c, bool isWhite);

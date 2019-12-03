@@ -64,7 +64,7 @@ void Bishop::setAllowedCells(Board* board, std::vector<Cell*> ennemy_cells, std:
     // diagonal top right
     i = x + 1;
     j = y - 1;
-    while(j < 8 and i >= 0) {
+    while(j >= 0 and i < 8) {
         Cell* c = board->getCell(i,j);
         // the cell has an adverse piece, move allowed
         if(std::find(ennemy_cells.begin(), ennemy_cells.end(), c) != ennemy_cells.end())
@@ -88,7 +88,7 @@ void Bishop::setAllowedCells(Board* board, std::vector<Cell*> ennemy_cells, std:
     // diagonal top left
     i = x - 1;
     j = y - 1;
-    while(j < 8 and i >= 0) {
+    while(j >= 0 and i >= 0) {
         Cell* c = board->getCell(i,j);
         // the cell has an adverse piece, move allowed
         if(std::find(ennemy_cells.begin(), ennemy_cells.end(), c) != ennemy_cells.end())

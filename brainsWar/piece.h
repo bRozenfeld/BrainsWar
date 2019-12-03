@@ -8,9 +8,6 @@
 #include "cell.h"
 #include "board.h"
 
-//class Cell;
-//class Board;
-
 class Piece
 {
 public:

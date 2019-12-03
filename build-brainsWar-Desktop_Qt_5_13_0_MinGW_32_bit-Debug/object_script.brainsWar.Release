@@ -4,6 +4,7 @@ release/cell.o
 release/game.o
 release/gcell.o
 release/ggame.o
+release/gpromotion.o
 release/king.o
 release/main.o
 release/move.o
@@ -12,5 +13,7 @@ release/piece.o
 release/player.o
 release/queen.o
 release/rook.o
+release/knight.o
 release/moc_gcell.o
 release/moc_ggame.o
+release/moc_gpromotion.o

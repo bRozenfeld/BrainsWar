@@ -6,6 +6,7 @@
 #include "game.h"
 #include "gcell.h"
 #include "piece.h"
+#include "gpromotion.h"
 
 #include <QWidget>
 #include <QLabel>
@@ -18,6 +19,7 @@ Q_OBJECT
 public:
     GGame(Game *g);
     GCell* getGCellFromCell(Cell* c);
+    void updateGraphics();
 private slots:
     void handleButton();
 private:
@@ -25,8 +27,7 @@ private:
     GCell* m_source;
     GCell* m_destination;
     std::vector<std::vector<GCell*>> m_board;
-    // methods
-    void updateGraphics();
+
 };
 
 #endif // GGAME_H

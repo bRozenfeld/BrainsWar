@@ -62,12 +62,11 @@ GGame::GGame(Game *g)
 
 void GGame::updateGraphics()
 {
-    std::cout << "updateG " << std::endl;
     for(int i = 0; i < 8; i++)
     {
         for(int j = 0; j < 8; j++)
         {
-            GCell *gc = m_board[i][j];
+            GCell *gc = m_board[static_cast<unsigned int>(i)][static_cast<unsigned int>(j)];
             gc->setToolTip(QString::fromStdString(m_game->getBoard()->getCell(i,j)->toString()));
             QPalette pal = palette();
             Piece *p = m_game->getPieceFromCell(gc->getCell());
@@ -119,7 +118,7 @@ GCell* GGame::getGCellFromCell(Cell* c)
 {
     int x = c->getX();
     int y = c->getY();
-    return m_board[x][y];
+    return m_board[static_cast<unsigned int>(x)][static_cast<unsigned int>(y)];
 }
 
 
@@ -129,7 +128,11 @@ void GGame::handleButton()
     GCell* gc = qobject_cast<GCell*>(obj);
     if(gc)
     {
-        //Cell *c = gc->getCell();
+        Cell *c = gc->getCell();
+        Piece *p = m_game->getPieceFromCell(c);
+        if(p != nullptr) std::cout << p->toString() << std::endl;
+
+
         if(m_source == nullptr)
         {
             m_source = gc;
@@ -142,6 +145,13 @@ void GGame::handleButton()
 
                 m_game->move(m_source->getCell(), m_destination->getCell());
                 m_game->update();
+                if(m_game->isPromoted())
+                {
+                    GPromotion *gp = new GPromotion(m_game, c);
+                    gp->show();
+                    updateGraphics();
+                }
+
                 //m_game->displayBoard();
                 m_source = nullptr;
                 m_destination = nullptr;

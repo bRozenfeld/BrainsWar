@@ -9,6 +9,7 @@ SOURCES += \
     game.cpp \
     gcell.cpp \
     ggame.cpp \
+    gpromotion.cpp \
     king.cpp \
     main.cpp \
     move.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     game.h \
     gcell.h \
     ggame.h \
+    gpromotion.h \
     king.h \
     move.h \
     pawn.h \

@@ -4,6 +4,7 @@ debug/cell.o
 debug/game.o
 debug/gcell.o
 debug/ggame.o
+debug/gpromotion.o
 debug/king.o
 debug/main.o
 debug/move.o
@@ -12,5 +13,7 @@ debug/piece.o
 debug/player.o
 debug/queen.o
 debug/rook.o
+debug/knight.o
 debug/moc_gcell.o
 debug/moc_ggame.o
+debug/moc_gpromotion.o
