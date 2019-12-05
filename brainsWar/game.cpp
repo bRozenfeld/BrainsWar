@@ -31,7 +31,7 @@ void Game::initGame()
 //    Pawn *bp7 = new Pawn("BP", m_board->getCell(6,1), false);
 //    Pawn *bp8 = new Pawn("BP", m_board->getCell(7,1), false);
 
-//    Rook *wr1 = new Rook("WR", m_board->getCell(0,7), true);
+    Rook *wr1 = new Rook("WR", m_board->getCell(0,7), true);
 //    Rook *wr2 = new Rook("WR", m_board->getCell(7,7), true);
 //    Bishop *wb1 = new Bishop("WB", m_board->getCell(2,7), true);
 //    Bishop *wb2 = new Bishop("WB", m_board->getCell(5,7), true);
@@ -66,7 +66,7 @@ void Game::initGame()
 //    black_pieces.push_back(bp7);
 //    black_pieces.push_back(bp8);
 
-//    white_pieces.push_back(wr1);
+    white_pieces.push_back(wr1);
 //    white_pieces.push_back(wr2);
 //    white_pieces.push_back(wb1);
 //    white_pieces.push_back(wb2);
@@ -187,10 +187,12 @@ void Game::updatePossibleMoves()
             }
         }
 
+        /*
         for(auto &p : m_black_player->getPiecesLeft())
         {
             p->clearAllowedCells();
         }
+        */
     }
     else
     {
@@ -220,10 +222,12 @@ void Game::updatePossibleMoves()
             }
         }
 
+        /*
         for(auto &p : m_white_player->getPiecesLeft())
         {
             p->clearAllowedCells();
         }
+        */
     }
 }
 
@@ -248,6 +252,37 @@ void Game::move(Cell* from, Cell* to)
         p->setCell(to);
         m_moves_history.push(new Move(from, to, eaten));
     }
+
+    /*
+    // if roque move, move the tower aswell
+    if(typeid(*p) == typeid(King) and std::abs(from->getX() - to->getX()) == 2)
+    {
+        // white king, big roque
+        if(p->isWhite() and to->getX() == 2)
+        {
+            Piece *p2 = getPieceFromCell(m_board->getCell(0,7));
+            p2->setCell(m_board->getCell(3,7));
+        }
+        // white king, little roque
+        else if(p->isWhite() and to->getX() == 6)
+        {
+            Piece *p2 = getPieceFromCell(m_board->getCell(7,7));
+            p2->setCell(m_board->getCell(5,7));
+        }
+        // black king, big roque
+        else if(!p->isWhite() and to->getX() == 2)
+        {
+            Piece *p2 = getPieceFromCell(m_board->getCell(0,0));
+            p2->setCell(m_board->getCell(3,7));
+        }
+        // black king, little roque
+        else if(!p->isWhite() and to->getX() == 6)
+        {
+            Piece *p2 = getPieceFromCell(m_board->getCell(7,0));
+            p2->setCell(m_board->getCell(5,7));
+        }
+    }
+    */
 }
 
 void Game::undoLastMove()
@@ -299,7 +334,6 @@ bool Game::isMovePossible(Cell *from, Cell *to)
 void Game::update()
 {
     // check for a pawn promotion
-
     for(auto &p : m_white_player->getPiecesLeft())
     {
         if(typeid(*p) == typeid(Pawn))
@@ -314,7 +348,7 @@ void Game::update()
 
     for(auto &p : m_black_player->getPiecesLeft())
     {
-        if(typeid(p) == typeid(Pawn))
+        if(typeid(*p) == typeid(Pawn))
         {
             Pawn* pawn = static_cast<Pawn*>(p);
             if(pawn->getCell()->getY() == 7)
@@ -326,6 +360,79 @@ void Game::update()
 
     nextTurn();
     updatePossibleMoves();
+
+    // check for castling (roque)
+    // neither rook or king should have moved
+    // king shouldn't be checked
+    // king shouldn't be checked for each cell he will go
+    // all the cells between king and rook have to be empty
+    if(isWhiteTurn())
+    {
+        // king didnt move and king not check
+        if(!m_white_player->getKing()->hasMoved() and !m_white_player->isCheck(m_black_player->getPiecesLeft()))
+        {
+            for(auto &p : m_white_player->getPiecesLeft())
+            {
+                if(typeid(*p) == typeid(Rook))
+                {
+                    Rook* rook = dynamic_cast<Rook*>(p);
+                    if(!rook->hasMoved())
+                    {
+                        if(rook->getCell()->getX() == 0)
+                        {
+                            Cell *c1 = m_board->getCell(3,7);
+                            Cell *c2 = m_board->getCell(2,7);
+                            // cells empty
+                            if(getPieceFromCell(c1) == nullptr and getPieceFromCell(c2) == nullptr)
+                            {
+                                // not check while moving
+                                bool canBeChecked = false;
+                                for(auto &ennemy_piece : m_black_player->getPiecesLeft())
+                                {
+                                    for(auto &c : ennemy_piece->getAllowedCells())
+                                    {
+                                        if(c == c1 or c == c2)
+                                        {
+                                            canBeChecked = true;
+                                            break;
+                                        }
+                                    }
+                                    if(canBeChecked) break;
+                                }
+                                if(!canBeChecked)
+                                {
+                                    m_white_player->getKing()->setBigRoqueAllowed(true);
+                                    updatePossibleMoves();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else
+    {
+
+    }
+
+    // clear the moves for the opposite side
+    if(m_is_white_turn)
+    {
+        for(auto &p : m_black_player->getPiecesLeft())
+        {
+            p->clearAllowedCells();
+        }
+    }
+    else
+    {
+        for(auto &p : m_white_player->getPiecesLeft())
+        {
+            p->clearAllowedCells();
+        }
+    }
+
+
     bool isCheckMate = true;
     if(m_is_white_turn)
     {

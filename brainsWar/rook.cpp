@@ -2,7 +2,9 @@
 
 Rook::Rook(std::string name, Cell *c, bool isWhite) : Piece(name, c, isWhite)
 {
-
+    m_has_moved = false;
+    m_start_x = c->getX();
+    m_start_y = c->getY();
 }
 
 
@@ -12,6 +14,9 @@ void Rook::setAllowedCells(Board* board, std::vector<Cell*> ennemy_cells, std::v
     int x = this->getCell()->getX();
     int y = this->getCell()->getY();
     int i, j;
+
+    if(m_start_x != x or m_start_y != y) m_has_moved = true;
+
 
     //horizontal right
     i = x + 1;

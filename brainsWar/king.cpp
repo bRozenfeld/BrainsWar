@@ -2,7 +2,11 @@
 
 King::King(std::string name, Cell *c, bool isWhite) : Piece(name, c, isWhite)
 {
-
+    m_start_x = c->getX();
+    m_start_y = c->getY();
+    m_has_moved = false;
+    m_is_big_roque_possible = false;
+    m_is_little_roque_possible = false;
 }
 
 
@@ -12,6 +16,8 @@ void King::setAllowedCells(Board *board, std::vector<Cell *> ennemy_cells, std::
     int x = this->getCell()->getX();
     int y = this->getCell()->getY();
     int i, j;
+
+    if(m_start_x != x or m_start_y != y) m_has_moved = true;
 
     // right cell
     i = x + 1;
@@ -117,6 +123,32 @@ void King::setAllowedCells(Board *board, std::vector<Cell *> ennemy_cells, std::
             allowed_cells.push_back(c);
         }
     }
+
+    // add the roques cells
+    if(isWhite() and m_is_big_roque_possible)
+    {
+        Cell *c = board->getCell(2,7);
+        allowed_cells.push_back(c);
+    }
+
+    if(isWhite() and m_is_little_roque_possible)
+    {
+        Cell *c = board->getCell(6,7);
+        allowed_cells.push_back(c);
+    }
+
+    if(!isWhite() and m_is_big_roque_possible)
+    {
+        Cell *c = board->getCell(2,0);
+        allowed_cells.push_back(c);
+    }
+
+    if(!isWhite() and m_is_little_roque_possible)
+    {
+        Cell *c = board->getCell(6,0);
+        allowed_cells.push_back(c);
+    }
+
 
     m_allowed_cells.insert(m_allowed_cells.end(), allowed_cells.begin(), allowed_cells.end());
 }

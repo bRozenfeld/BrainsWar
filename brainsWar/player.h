@@ -17,6 +17,7 @@ public:
     void removePiece(Piece* p);
     void addPiece(Piece *p) { m_pieces_left.push_back(p); }
     bool isCheck(std::vector<Piece*>ennemyPieces);
+    King* getKing() { return m_king; }
 private:
     bool m_is_white;
     King *m_king;
