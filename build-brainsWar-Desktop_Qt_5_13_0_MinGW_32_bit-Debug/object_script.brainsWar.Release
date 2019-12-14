@@ -7,6 +7,7 @@ release/ggame.o
 release/gpromotion.o
 release/king.o
 release/main.o
+release/menu.o
 release/move.o
 release/pawn.o
 release/piece.o
@@ -14,6 +15,8 @@ release/player.o
 release/queen.o
 release/rook.o
 release/knight.o
+release/wrongmodeexception.o
 release/moc_gcell.o
 release/moc_ggame.o
 release/moc_gpromotion.o
+release/moc_menu.o

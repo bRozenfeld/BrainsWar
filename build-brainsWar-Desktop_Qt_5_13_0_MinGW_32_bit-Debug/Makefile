@@ -249,8 +249,11 @@ Makefile: ../brainsWar/brainsWar.pro E:/ProgrammingTools/Qt/5.13.0/mingw73_32/mk
 		E:/ProgrammingTools/Qt/5.13.0/mingw73_32/mkspecs/features/yacc.prf \
 		E:/ProgrammingTools/Qt/5.13.0/mingw73_32/mkspecs/features/lex.prf \
 		../brainsWar/brainsWar.pro \
+		E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/Qt5MultimediaWidgets.prl \
+		E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/Qt5Multimedia.prl \
 		E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/Qt5Widgets.prl \
 		E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/Qt5Gui.prl \
+		E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/Qt5Network.prl \
 		E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/Qt5Core.prl \
 		E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/qtmain.prl
 	$(QMAKE) -o Makefile ..\brainsWar\brainsWar.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -440,8 +443,11 @@ E:/ProgrammingTools/Qt/5.13.0/mingw73_32/mkspecs/features/exceptions.prf:
 E:/ProgrammingTools/Qt/5.13.0/mingw73_32/mkspecs/features/yacc.prf:
 E:/ProgrammingTools/Qt/5.13.0/mingw73_32/mkspecs/features/lex.prf:
 ../brainsWar/brainsWar.pro:
+E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/Qt5MultimediaWidgets.prl:
+E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/Qt5Multimedia.prl:
 E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/Qt5Widgets.prl:
 E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/Qt5Gui.prl:
+E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/Qt5Network.prl:
 E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/Qt5Core.prl:
 E:/ProgrammingTools/Qt/5.13.0/mingw73_32/lib/qtmain.prl:
 qmake: FORCE

@@ -11,6 +11,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QFont>
+#include <QEventLoop>
 
 class GGame : public QWidget
 {

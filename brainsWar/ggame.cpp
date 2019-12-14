@@ -129,9 +129,7 @@ void GGame::handleButton()
     if(gc)
     {
         Cell *c = gc->getCell();
-        Piece *p = m_game->getPieceFromCell(c);
-        if(p != nullptr) std::cout << p->toString() << std::endl;
-
+        //Piece *p = m_game->getPieceFromCell(c);
 
         if(m_source == nullptr)
         {
@@ -147,8 +145,9 @@ void GGame::handleButton()
                 m_game->update();
                 if(m_game->isPromoted())
                 {
-                    GPromotion *gp = new GPromotion(m_game, c);
-                    gp->show();
+                    GPromotion *gp = new GPromotion(m_game, c, this);
+                    gp->exec();
+
                     updateGraphics();
                 }
 

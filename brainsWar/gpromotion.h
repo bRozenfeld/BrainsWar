@@ -3,17 +3,18 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <QDialog>
 
 #include "game.h"
 #include "ggame.h"
 #include "cell.h"
 
-class GPromotion : public QWidget
+class GPromotion : public QDialog
 {
 Q_OBJECT
 
 public:
-    GPromotion(Game *g, Cell *c);
+    GPromotion(Game *g, Cell *c, QWidget *parent = nullptr);
 private slots:
     void queenButtonClicked();
     void rookButtonClicked();

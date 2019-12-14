@@ -91,7 +91,7 @@ void GPromotion::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
 }
 
 QT_INIT_METAOBJECT const QMetaObject GPromotion::staticMetaObject = { {
-    &QWidget::staticMetaObject,
+    &QDialog::staticMetaObject,
     qt_meta_stringdata_GPromotion.data,
     qt_meta_data_GPromotion,
     qt_static_metacall,
@@ -110,12 +110,12 @@ void *GPromotion::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_GPromotion.stringdata0))
         return static_cast<void*>(this);
-    return QWidget::qt_metacast(_clname);
+    return QDialog::qt_metacast(_clname);
 }
 
 int GPromotion::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QWidget::qt_metacall(_c, _id, _a);
+    _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {

@@ -7,6 +7,7 @@ debug/ggame.o
 debug/gpromotion.o
 debug/king.o
 debug/main.o
+debug/menu.o
 debug/move.o
 debug/pawn.o
 debug/piece.o
@@ -14,6 +15,8 @@ debug/player.o
 debug/queen.o
 debug/rook.o
 debug/knight.o
+debug/wrongmodeexception.o
 debug/moc_gcell.o
 debug/moc_ggame.o
 debug/moc_gpromotion.o
+debug/moc_menu.o

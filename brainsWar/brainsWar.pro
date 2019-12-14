@@ -1,4 +1,6 @@
-QT += core gui
+QT += core gui\
+      multimedia\
+      multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -12,13 +14,15 @@ SOURCES += \
     gpromotion.cpp \
     king.cpp \
     main.cpp \
+    menu.cpp \
     move.cpp \
     pawn.cpp \
     piece.cpp \
     player.cpp \
     queen.cpp \
     rook.cpp \
-    knight.cpp
+    knight.cpp \
+    wrongmodeexception.cpp
 
 HEADERS += \
     bishop.h \
@@ -29,10 +33,18 @@ HEADERS += \
     ggame.h \
     gpromotion.h \
     king.h \
+    menu.h \
     move.h \
     pawn.h \
     piece.h \
     player.h \
     queen.h \
     rook.h \
-    knight.h
+    knight.h \
+    wrongmodeexception.h
+
+FORMS += \
+    menu.ui
+
+RESOURCES
+    ressources.qrc

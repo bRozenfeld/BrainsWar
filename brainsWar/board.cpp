@@ -28,6 +28,8 @@ Board::Board(const Board &b)
     }
 }
 
+
+
 Cell* Board::getCell(std::string cellName)
 {
     Cell *c = nullptr;

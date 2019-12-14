@@ -25,8 +25,8 @@ void Pawn::setAllowedCells(Board *board, std::vector<Cell *> ennemy_cells, std::
         if( j >= 0)
         {
             Cell *c = board->getCell(i,j);
-            // the cell as no ally piece, move not allowed
-            if(!(std::find(ally_cells.begin(), ally_cells.end(), c) != ally_cells.end()))
+            // the cell as no ally piece or no ennemy piece, move not allowed
+            if(!(std::find(ally_cells.begin(), ally_cells.end(), c) != ally_cells.end()) and !(std::find(ennemy_cells.begin(), ennemy_cells.end(), c) != ennemy_cells.end()))
             {
                 allowed_cells.push_back(c);
             }
@@ -36,8 +36,8 @@ void Pawn::setAllowedCells(Board *board, std::vector<Cell *> ennemy_cells, std::
         {
             j = y - 2;
             Cell *c = board->getCell(i,j);
-            // the cell as no ally piece, move not allowed
-            if(!(std::find(ally_cells.begin(), ally_cells.end(), c) != ally_cells.end()))
+            // the cell as no ally piece or ennemy piece, move not allowed, move not allowed
+            if(!(std::find(ally_cells.begin(), ally_cells.end(), c) != ally_cells.end()) and !(std::find(ennemy_cells.begin(), ennemy_cells.end(), c) != ennemy_cells.end()))
             {
                 allowed_cells.push_back(c);
             }
@@ -78,8 +78,8 @@ void Pawn::setAllowedCells(Board *board, std::vector<Cell *> ennemy_cells, std::
         if( j >= 0)
         {
             Cell *c = board->getCell(i,j);
-            // the cell as no ally piece, move not allowed
-            if(!(std::find(ally_cells.begin(), ally_cells.end(), c) != ally_cells.end()))
+            // the cell as no ally piece or ennemy piece, move not allowed
+            if(!(std::find(ally_cells.begin(), ally_cells.end(), c) != ally_cells.end()) and !(std::find(ennemy_cells.begin(), ennemy_cells.end(), c) != ennemy_cells.end()))
             {
                 allowed_cells.push_back(c);
             }
@@ -89,8 +89,8 @@ void Pawn::setAllowedCells(Board *board, std::vector<Cell *> ennemy_cells, std::
         {
             j = y + 2;
             Cell *c = board->getCell(i,j);
-            // the cell as no ally piece, move not allowed
-            if(!(std::find(ally_cells.begin(), ally_cells.end(), c) != ally_cells.end()))
+            // the cell as no ally piece or ennemy piece , move not allowed
+            if(!(std::find(ally_cells.begin(), ally_cells.end(), c) != ally_cells.end()) and !(std::find(ennemy_cells.begin(), ennemy_cells.end(), c) != ennemy_cells.end()))
             {
                 allowed_cells.push_back(c);
             }

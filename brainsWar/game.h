@@ -6,6 +6,8 @@
 #include<algorithm>
 #include<stack>
 
+#include <QRandomGenerator64>
+
 #include "piece.h"
 #include "board.h"
 #include "player.h"
@@ -17,11 +19,12 @@
 #include "bishop.h"
 #include "queen.h"
 #include "knight.h"
+#include "wrongmodeexception.h"
 
 class Game
 {
 public:
-    Game();
+    Game(int version);
     Board* getBoard() { return m_board; }
     Piece* getPieceFromCell(Cell* c);
     bool isMovePossible(Cell* from, Cell* to);
@@ -30,6 +33,7 @@ public:
     void displayBoard();
     void displayPossibleMoves();
     void updatePossibleMoves();
+    void updateIsCastlingMovePossible();
     void move(Cell* from, Cell* to);
     void undoLastMove();
     void nextTurn() { m_is_white_turn = !m_is_white_turn; }
@@ -44,6 +48,7 @@ private:
     bool m_is_promoted;
     // methods
     void initGame();
+    void initBrainsWar();
 };
 
 #endif // GAME_H
