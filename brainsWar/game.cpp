@@ -74,6 +74,10 @@ void Game::initBrainsWar()
         black_pieces.push_back(bk);
         cell_used.push_back(wk->getCell());
         cell_used.push_back(bk->getCell());
+
+        m_white_player = new Player(true, white_pieces, wk);
+        m_black_player = new Player(false, black_pieces, bk);
+
     }
     else if(random_y == 1)
     {
@@ -83,6 +87,9 @@ void Game::initBrainsWar()
         black_pieces.push_back(bk);
         cell_used.push_back(wk->getCell());
         cell_used.push_back(bk->getCell());
+
+        m_white_player = new Player(true, white_pieces, wk);
+        m_black_player = new Player(false, black_pieces, bk);
     }
 
     // add 9 randoms pieces
@@ -128,19 +135,19 @@ void Game::initBrainsWar()
         {
             if(random_y == 0)
             {
-                Queen *wq = new Queen("BQ", m_board->getCell(random_x, random_y), false);
-                Queen *bq = new Queen("WQ", m_board->getCell(random_x, random_y+7), true);
-                white_pieces.push_back(wq);
-                black_pieces.push_back(bq);
+                Queen *bq = new Queen("BQ", m_board->getCell(random_x, random_y), false);
+                Queen *wq = new Queen("WQ", m_board->getCell(random_x, random_y+7), true);
+                m_white_player->addPiece(wq);
+                m_black_player->addPiece(bq);
                 cell_used.push_back(wq->getCell());
                 cell_used.push_back(bq->getCell());
             }
             else if(random_y == 1)
             {
-                Queen *wq = new Queen("BQ", m_board->getCell(random_x, random_y), false);
-                Queen *bq = new Queen("WQ", m_board->getCell(random_x, random_y+5), true);
-                white_pieces.push_back(wq);
-                black_pieces.push_back(bq);
+                Queen *bq = new Queen("BQ", m_board->getCell(random_x, random_y), false);
+                Queen *wq = new Queen("WQ", m_board->getCell(random_x, random_y+5), true);
+                m_white_player->addPiece(wq);
+                m_black_player->addPiece(bq);
                 cell_used.push_back(wq->getCell());
                 cell_used.push_back(bq->getCell());
             }
@@ -150,19 +157,19 @@ void Game::initBrainsWar()
         {
             if(random_y == 0)
             {
-                Bishop *wb = new Bishop("BB", m_board->getCell(random_x, random_y), false);
-                Bishop *bb = new Bishop("WB", m_board->getCell(random_x, random_y+7), true);
-                white_pieces.push_back(wb);
-                black_pieces.push_back(bb);
+                Bishop *bb = new Bishop("BB", m_board->getCell(random_x, random_y), false);
+                Bishop *wb = new Bishop("WB", m_board->getCell(random_x, random_y+7), true);
+                m_white_player->addPiece(wb);
+                m_black_player->addPiece(bb);
                 cell_used.push_back(wb->getCell());
                 cell_used.push_back(bb->getCell());
             }
             else if(random_y == 1)
             {
-                Bishop *wb = new Bishop("BB", m_board->getCell(random_x, random_y), false);
-                Bishop *bb = new Bishop("WB", m_board->getCell(random_x, random_y+5), true);
-                white_pieces.push_back(wb);
-                black_pieces.push_back(bb);
+                Bishop *bb = new Bishop("BB", m_board->getCell(random_x, random_y), false);
+                Bishop *wb = new Bishop("WB", m_board->getCell(random_x, random_y+5), true);
+                m_white_player->addPiece(wb);
+                m_black_player->addPiece(bb);
                 cell_used.push_back(wb->getCell());
                 cell_used.push_back(bb->getCell());
             }
@@ -171,19 +178,19 @@ void Game::initBrainsWar()
         {
             if(random_y == 0)
             {
-                Rook *wr = new Rook("BR", m_board->getCell(random_x, random_y), false);
-                Rook *br = new Rook("WR", m_board->getCell(random_x, random_y+7), true);
-                white_pieces.push_back(wr);
-                black_pieces.push_back(br);
+                Rook *br = new Rook("BR", m_board->getCell(random_x, random_y), false);
+                Rook *wr = new Rook("WR", m_board->getCell(random_x, random_y+7), true);
+                m_white_player->addPiece(wr);
+                m_black_player->addPiece(br);
                 cell_used.push_back(wr->getCell());
                 cell_used.push_back(br->getCell());
             }
             else if(random_y == 1)
             {
-                Rook *wr = new Rook("BR", m_board->getCell(random_x, random_y), false);
-                Rook *br = new Rook("WR", m_board->getCell(random_x, random_y+5), true);
-                white_pieces.push_back(wr);
-                black_pieces.push_back(br);
+                Rook *br = new Rook("BR", m_board->getCell(random_x, random_y), false);
+                Rook *wr = new Rook("WR", m_board->getCell(random_x, random_y+5), true);
+                m_white_player->addPiece(wr);
+                m_black_player->addPiece(br);
                 cell_used.push_back(wr->getCell());
                 cell_used.push_back(br->getCell());
             }
@@ -192,19 +199,19 @@ void Game::initBrainsWar()
         {
             if(random_y == 0)
             {
-                Knight *wn = new Knight("BN", m_board->getCell(random_x, random_y), false);
-                Knight *bn = new Knight("WN", m_board->getCell(random_x, random_y+7), true);
-                white_pieces.push_back(wn);
-                black_pieces.push_back(bn);
+                Knight *bn = new Knight("BN", m_board->getCell(random_x, random_y), false);
+                Knight *wn = new Knight("WN", m_board->getCell(random_x, random_y+7), true);
+                m_white_player->addPiece(wn);
+                m_black_player->addPiece(bn);
                 cell_used.push_back(wn->getCell());
                 cell_used.push_back(bn->getCell());
             }
             else if(random_y == 1)
             {
-                Knight *wn = new Knight("BN", m_board->getCell(random_x, random_y), false);
-                Knight *bn = new Knight("WN", m_board->getCell(random_x, random_y+5), true);
-                white_pieces.push_back(wn);
-                black_pieces.push_back(bn);
+                Knight *bn = new Knight("BN", m_board->getCell(random_x, random_y), false);
+                Knight *wn = new Knight("WN", m_board->getCell(random_x, random_y+5), true);
+                m_white_player->addPiece(wn);
+                m_black_player->addPiece(bn);
                 cell_used.push_back(wn->getCell());
                 cell_used.push_back(bn->getCell());
             }
@@ -212,12 +219,11 @@ void Game::initBrainsWar()
 
     }
 
-    m_white_player = new Player(true, white_pieces, wk);
-    m_black_player = new Player(false, black_pieces, bk);
 
     for(auto &p : m_white_player->getPiecesLeft())
     {
         p->setAllowedCells(m_board, m_black_player->getCellsOccupied(), m_white_player->getCellsOccupied());
+        std::cout << p->toString() << std::endl;
     }
 
 }
