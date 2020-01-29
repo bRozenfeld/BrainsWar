@@ -1,4 +1,5 @@
 # BrainsWar
+ * Jeu d'échec réalisé en c++ à l'aide de la bibliothèque QT.
 
 ## Prérequis (système sur lequel tout fonctionne parfaitement pour nous)
 * QT >= 5.10
